@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redix Client Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand">
+            <img src="assets/redix_logo.png" alt="Redix Digital" class="brand-logo" />
+            <div class="brand-text">
+                <h1>Client Hub</h1>
+                <p>Quick access to socials, Drive, and resources</p>
+            </div>
+        </div>
+    </header>
+    <!-- Sign-in overlay -->
+    <div id="auth-overlay" class="auth-overlay" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+        <form id="auth-form" class="auth-card">
+            <div class="auth-brand">
+                <img src="assets/redix_logo.png" alt="Redix Digital" />
+                <h2 id="auth-title">Sign in</h2>
+            </div>
+
+            <label class="auth-field">
+                <span>Username</span>
+                <input id="auth-user" name="user" type="text" autocomplete="username" required />
+            </label>
+
+            <label class="auth-field">
+                <span>Password</span>
+                <input id="auth-pass" name="pass" type="password" autocomplete="current-password" required />
+            </label>
+
+            <button type="submit" class="auth-submit">Enter</button>
+            <p id="auth-error" class="auth-error" role="alert" aria-live="polite"></p>
+        </form>
+    </div>
+
+
+    <main class="container">
+        <section id="grid" class="grid" aria-live="polite"></section>
+    </main>
+    <!-- New: Sales and proposals
+    <section id="links" class="links" aria-label="Sales demos and client proposals">
+        <h2 class="section-title">Sales demos</h2>
+        <div id="sales-grid" class="link-grid"></div>
+
+        <h2 class="section-title">Client proposals</h2>
+        <div id="proposals-grid" class="link-grid"></div>
+    </section> -->
+
+
+    <script src="data.js" defer></script>
+    <script src="controle.js" defer></script>
+</body>
+
+</html>
