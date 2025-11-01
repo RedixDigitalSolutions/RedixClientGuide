@@ -855,3 +855,24 @@ body {
         backdrop-filter: none;
     }
 }
+
+.auth-remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0;
+    cursor: pointer;
+}
+
+.auth-remember input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--accent);
+}
+
+.auth-remember span {
+    color: var(--muted);
+    font-size: 14px;
+    user-select: none;
+}

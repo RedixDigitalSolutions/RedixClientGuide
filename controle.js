@@ -1,5 +1,6 @@
 (function () {
     // ===== Auth helpers =====
+    // ===== Auth helpers (REPLACE your existing auth block) =====
     const AUTH = window.AUTH_CONFIG || {};
     const SESSION_KEY = AUTH.sessionKey || "redix_auth_v1";
 
@@ -11,7 +12,15 @@
             : []);
 
     function isAuthEnabled() { return !!AUTH.enabled; }
-    function isAuthed() { try { return sessionStorage.getItem(SESSION_KEY) === "1"; } catch { return false; } }
+
+    function isAuthed() {
+        // Check both localStorage and sessionStorage
+        try {
+            return localStorage.getItem(SESSION_KEY) === "1" || sessionStorage.getItem(SESSION_KEY) === "1";
+        } catch {
+            return false;
+        }
+    }
 
     async function sha256Hex(text) {
         const buf = new TextEncoder().encode(text);
@@ -30,6 +39,7 @@
     function wireAuthForm(onSuccess) {
         const form = document.getElementById("auth-form");
         const err = document.getElementById("auth-error");
+        const rememberCheck = document.getElementById("auth-remember");
         if (!form) return;
 
         form.addEventListener("submit", async (e) => {
@@ -38,6 +48,7 @@
 
             const user = (document.getElementById("auth-user")?.value || "").trim();
             const pass = document.getElementById("auth-pass")?.value || "";
+            const remember = rememberCheck?.checked || false;
 
             const acct = findAccount(user);
             let ok = false;
@@ -52,7 +63,17 @@
             }
 
             if (ok) {
-                try { sessionStorage.setItem(SESSION_KEY, "1"); } catch { }
+                try {
+                    if (remember) {
+                        // Persist across browser sessions
+                        localStorage.setItem(SESSION_KEY, "1");
+                        sessionStorage.removeItem(SESSION_KEY);
+                    } else {
+                        // Clear when tab closes
+                        sessionStorage.setItem(SESSION_KEY, "1");
+                        localStorage.removeItem(SESSION_KEY);
+                    }
+                } catch { }
                 hideOverlay();
                 onSuccess?.();
             } else {
@@ -60,6 +81,7 @@
             }
         });
     }
+
 
     // ===== Existing app code (render grid) =====
     const grid = document.getElementById("grid");
