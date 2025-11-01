@@ -52,7 +52,7 @@ window.CLIENTS = [
     {
         id: "Moatez",
         name: "Moatez",
-        photo: "assets/moatez.png",
+        photo: "assets/Moatez.png",
         social: {
             tiktok: "https://www.tiktok.com/@drmoetazalhousayni",
             instagram: "https://www.instagram.com/dr_moetaz_alhousayni/"
