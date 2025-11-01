@@ -70,17 +70,17 @@ window.AUTH_CONFIG = {
     accounts: [
         {
             username: "pexa",
-            // SHA-256 of "Pexaui@1234"
-            passSha256: "a646f7b8b78e67f4e64f70ca80e1fbce556eb03810b3782151ac501b1875e140"
+         
+            passSha256: "1c29817e6019588a1d15c382f9bd6b59bb06985e48aa5c88d8a3010e20f3c008"
         },
         {
             username: "moemen",
-            // SHA-256 of "Elmon@1234"
-            passSha256: "829882535a69384a042bb871ae3c3ea20f586ed700551ea9ae1ddb8004cf431b"
+   
+            passSha256: "7850b6fa8341cf3b08759d2ae2a89729272bc508d8b82d02a8eee36103b3a7a4"
         },
         {
             username: "hamza",
-            // SHA-256 of "Khlaf@1234"
+       
             passSha256: "c176db1001d499b30cef7d6a51b75920559406797405fabb41b86509e2a0a41f"
         }
     ]
